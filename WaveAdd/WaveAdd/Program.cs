@@ -16,7 +16,7 @@ namespace WaveAdd
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new waveStudio());
+            Application.Run(new WaveStudio());
         }
     }
 }

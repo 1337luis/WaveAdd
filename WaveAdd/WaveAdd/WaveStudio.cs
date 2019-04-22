@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace WaveAdd
 {
-    public partial class waveStudio : Form
+    public partial class WaveStudio : Form
     {
-        public waveStudio()
+        public WaveStudio()
         {
             InitializeComponent();
+        }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About about = new About();
+            about.ShowDialog();
         }
     }
 }
