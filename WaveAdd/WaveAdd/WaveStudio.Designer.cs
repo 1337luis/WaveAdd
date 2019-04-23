@@ -41,6 +41,7 @@
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.baseContainer = new System.Windows.Forms.SplitContainer();
             this.waveContainer = new System.Windows.Forms.SplitContainer();
+            this.wavesContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.resultCanvas = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.generalOptions = new System.Windows.Forms.GroupBox();
@@ -69,7 +70,7 @@
             this.newWaveOperationBox = new System.Windows.Forms.GroupBox();
             this.subOperation = new System.Windows.Forms.RadioButton();
             this.addOperation = new System.Windows.Forms.RadioButton();
-            this.wavesContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.redrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.principalMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseContainer)).BeginInit();
             this.baseContainer.Panel1.SuspendLayout();
@@ -98,7 +99,8 @@
             this.principalMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.ediciónToolStripMenuItem,
-            this.ayudaToolStripMenuItem});
+            this.ayudaToolStripMenuItem,
+            this.redrawToolStripMenuItem});
             this.principalMenu.Location = new System.Drawing.Point(0, 0);
             this.principalMenu.Name = "principalMenu";
             this.principalMenu.Size = new System.Drawing.Size(1453, 24);
@@ -150,8 +152,9 @@
             // eliminarTodoToolStripMenuItem
             // 
             this.eliminarTodoToolStripMenuItem.Name = "eliminarTodoToolStripMenuItem";
-            this.eliminarTodoToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.eliminarTodoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eliminarTodoToolStripMenuItem.Text = "Eliminar todo";
+            this.eliminarTodoToolStripMenuItem.Click += new System.EventHandler(this.eliminarTodoToolStripMenuItem_Click);
             // 
             // ayudaToolStripMenuItem
             // 
@@ -202,6 +205,17 @@
             this.waveContainer.Size = new System.Drawing.Size(1199, 676);
             this.waveContainer.SplitterDistance = 463;
             this.waveContainer.TabIndex = 0;
+            // 
+            // wavesContainer
+            // 
+            this.wavesContainer.AutoScroll = true;
+            this.wavesContainer.AutoSize = true;
+            this.wavesContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.wavesContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wavesContainer.Location = new System.Drawing.Point(0, 0);
+            this.wavesContainer.Name = "wavesContainer";
+            this.wavesContainer.Size = new System.Drawing.Size(1199, 463);
+            this.wavesContainer.TabIndex = 0;
             // 
             // resultCanvas
             // 
@@ -261,12 +275,17 @@
             // 
             // addWaveButton
             // 
+            this.addWaveButton.BackColor = System.Drawing.Color.Navy;
+            this.addWaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addWaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addWaveButton.ForeColor = System.Drawing.Color.White;
             this.addWaveButton.Location = new System.Drawing.Point(6, 366);
             this.addWaveButton.Name = "addWaveButton";
             this.addWaveButton.Size = new System.Drawing.Size(229, 55);
             this.addWaveButton.TabIndex = 5;
             this.addWaveButton.Text = "Añadir";
-            this.addWaveButton.UseVisualStyleBackColor = true;
+            this.addWaveButton.UseVisualStyleBackColor = false;
+            this.addWaveButton.Click += new System.EventHandler(this.addWaveButton_Click);
             // 
             // newWaveDelayBox
             // 
@@ -324,6 +343,7 @@
             this.delayValue.TabIndex = 6;
             this.delayValue.Text = "Valor:";
             this.delayValue.UseVisualStyleBackColor = true;
+            this.delayValue.CheckedChanged += new System.EventHandler(this.delayValue_CheckedChanged);
             // 
             // newWaveDurationBox
             // 
@@ -369,6 +389,7 @@
             this.valueDuration.TabIndex = 3;
             this.valueDuration.Text = "Valor:";
             this.valueDuration.UseVisualStyleBackColor = true;
+            this.valueDuration.CheckedChanged += new System.EventHandler(this.valueDuration_CheckedChanged);
             // 
             // infiniteDuration
             // 
@@ -402,10 +423,16 @@
             this.valueBar.TabIndex = 1;
             this.valueBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.valueBar.Value = 1;
+            this.valueBar.Scroll += new System.EventHandler(this.valueBar_Scroll);
             // 
             // valueNum
             // 
             this.valueNum.Location = new System.Drawing.Point(6, 19);
+            this.valueNum.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.valueNum.Name = "valueNum";
             this.valueNum.Size = new System.Drawing.Size(52, 20);
             this.valueNum.TabIndex = 0;
@@ -414,6 +441,7 @@
             0,
             0,
             0});
+            this.valueNum.ValueChanged += new System.EventHandler(this.valueNum_ValueChanged);
             // 
             // newWaveTypeBox
             // 
@@ -536,13 +564,12 @@
             this.addOperation.Text = "Suma";
             this.addOperation.UseVisualStyleBackColor = true;
             // 
-            // wavesContainer
+            // redrawToolStripMenuItem
             // 
-            this.wavesContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wavesContainer.Location = new System.Drawing.Point(0, 0);
-            this.wavesContainer.Name = "wavesContainer";
-            this.wavesContainer.Size = new System.Drawing.Size(1199, 463);
-            this.wavesContainer.TabIndex = 0;
+            this.redrawToolStripMenuItem.Name = "redrawToolStripMenuItem";
+            this.redrawToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.redrawToolStripMenuItem.Text = "Redraw";
+            this.redrawToolStripMenuItem.Click += new System.EventHandler(this.redrawToolStripMenuItem_Click);
             // 
             // WaveStudio
             // 
@@ -551,6 +578,7 @@
             this.ClientSize = new System.Drawing.Size(1453, 700);
             this.Controls.Add(this.baseContainer);
             this.Controls.Add(this.principalMenu);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.principalMenu;
             this.Name = "WaveStudio";
@@ -562,6 +590,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.baseContainer)).EndInit();
             this.baseContainer.ResumeLayout(false);
             this.waveContainer.Panel1.ResumeLayout(false);
+            this.waveContainer.Panel1.PerformLayout();
             this.waveContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.waveContainer)).EndInit();
             this.waveContainer.ResumeLayout(false);
@@ -630,6 +659,7 @@
         private System.Windows.Forms.RadioButton subOperation;
         private System.Windows.Forms.RadioButton addOperation;
         private System.Windows.Forms.FlowLayoutPanel wavesContainer;
+        private System.Windows.Forms.ToolStripMenuItem redrawToolStripMenuItem;
     }
 }
 

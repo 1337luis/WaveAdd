@@ -6,14 +6,26 @@ using System.Threading.Tasks;
 
 namespace WaveAdd
 {
-    class Wave
+    /*public string Code {
+   get {
+      return code;
+   }
+   set {
+      code = value;
+   }
+}
+*/
+    public class Wave
     {
-        WaveOperation op;
+        
+        public WaveOperation op;
         WaveType tp;
         double value;
         int duration;
         int delay;
 
+        public WaveOperation Operation { get { return op; } set { op = value; } }
+        public WaveType Type { get { return tp; } set { tp = value; } }
         public enum WaveOperation
         {
             sum = 0,
@@ -40,82 +52,82 @@ namespace WaveAdd
             this.delay = delay;
         }
 
-        public double getValue()
+        public double GetValue()
         {
             return value;
         }
 
-        public WaveOperation getWaveOperation()
+        public WaveOperation GetWaveOperation()
         {
             return op;
         }
 
-        public WaveType getWaveType()
+        public WaveType GetWaveType()
         {
             return tp;
         }
 
-        public int getDelay()
+        public int GetDelay()
         {
             return delay;
         }
 
-        public int getDuration()
+        public int GetDuration()
         {
             return duration;
         }
 
-        public void setWaveType( WaveType tp ) 
+        public void SetWaveType( WaveType tp ) 
         {
             this.tp = tp;
         }
 
-        public void setWaveOperaton( WaveOperation op )
+        public void SetWaveOperaton( WaveOperation op )
         {
             this.op = op;
         }
 
-        public void setValue( double value )
+        public void SetValue( double value )
         {
             this.value = value;
         }
 
-        public void setDuration( int duration ) 
+        public void SetDuration( int duration ) 
         {
             this.duration = duration;
         }
 
-        public void setDelay( int delay ) 
+        public void SetDelay( int delay ) 
         {
             this.delay = delay;
         }
 
-        public double getY( int x )
+        public double GetY( int x )
         {
             double result = 0;
 
             switch( tp )
             {
                 case WaveType.sin:
-                    result = getValue() * Math.Sin( x );
+                    result = GetValue() * Math.Sin( x );
                     break;
                 case WaveType.cos:
-                    result = getValue() * Math.Cos( x );
+                    result = GetValue() * Math.Cos( x );
                     break;
                 case WaveType.asin:
-                    result = getValue() * Math.Asin( x );
+                    result = GetValue() * Math.Asin( x );
                     break;
                 case WaveType.acos:
-                    result = getValue() * Math.Acos( x );
+                    result = GetValue() * Math.Acos( x );
                     break;
                 case WaveType.tan:
-                    result = getValue() * Math.Tan( x );
+                    result = GetValue() * Math.Tan( x );
                     break;
                 case WaveType.atan:
-                    result = getValue() * Math.Atan( x );
+                    result = GetValue() * Math.Atan( x );
                     break;
                 case WaveType.abs:
-                    result = getValue() * Math.Abs( x );
+                    result = GetValue() * Math.Abs( x );
                     break;
             }
 

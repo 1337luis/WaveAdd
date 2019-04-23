@@ -59,6 +59,12 @@
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
     <Compile Include="Wave.cs" />
+    <Compile Include="WaveDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WaveDisplay.Designer.cs">
+      <DependentUpon>WaveDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="WaveStudio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaveDisplay.resx">
+      <DependentUpon>WaveDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WaveStudio.resx">
       <DependentUpon>WaveStudio.cs</DependentUpon>
