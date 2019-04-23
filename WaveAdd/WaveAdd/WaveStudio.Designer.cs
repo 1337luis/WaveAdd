@@ -39,6 +39,7 @@
             this.eliminarTodoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.redrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.baseContainer = new System.Windows.Forms.SplitContainer();
             this.waveContainer = new System.Windows.Forms.SplitContainer();
             this.wavesContainer = new System.Windows.Forms.FlowLayoutPanel();
@@ -70,7 +71,6 @@
             this.newWaveOperationBox = new System.Windows.Forms.GroupBox();
             this.subOperation = new System.Windows.Forms.RadioButton();
             this.addOperation = new System.Windows.Forms.RadioButton();
-            this.redrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.principalMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseContainer)).BeginInit();
             this.baseContainer.Panel1.SuspendLayout();
@@ -152,7 +152,7 @@
             // eliminarTodoToolStripMenuItem
             // 
             this.eliminarTodoToolStripMenuItem.Name = "eliminarTodoToolStripMenuItem";
-            this.eliminarTodoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarTodoToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.eliminarTodoToolStripMenuItem.Text = "Eliminar todo";
             this.eliminarTodoToolStripMenuItem.Click += new System.EventHandler(this.eliminarTodoToolStripMenuItem_Click);
             // 
@@ -170,6 +170,13 @@
             this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.acercaDeToolStripMenuItem.Text = "Acerca de...";
             this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
+            // 
+            // redrawToolStripMenuItem
+            // 
+            this.redrawToolStripMenuItem.Name = "redrawToolStripMenuItem";
+            this.redrawToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.redrawToolStripMenuItem.Text = "Redraw";
+            this.redrawToolStripMenuItem.Click += new System.EventHandler(this.redrawToolStripMenuItem_Click);
             // 
             // baseContainer
             // 
@@ -216,6 +223,9 @@
             this.wavesContainer.Name = "wavesContainer";
             this.wavesContainer.Size = new System.Drawing.Size(1199, 463);
             this.wavesContainer.TabIndex = 0;
+            this.wavesContainer.Scroll += new System.Windows.Forms.ScrollEventHandler(this.wavesContainer_Scroll);
+            this.wavesContainer.SizeChanged += new System.EventHandler(this.wavesContainer_SizeChanged);
+            this.wavesContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.wavesContainer_Paint);
             // 
             // resultCanvas
             // 
@@ -251,10 +261,12 @@
             // 
             // properties
             // 
+            this.properties.HelpVisible = false;
             this.properties.Location = new System.Drawing.Point(6, 19);
             this.properties.Name = "properties";
             this.properties.Size = new System.Drawing.Size(232, 212);
             this.properties.TabIndex = 0;
+            this.properties.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.properties_PropertyValueChanged);
             // 
             // newWaveoptions
             // 
@@ -422,7 +434,7 @@
             this.valueBar.Size = new System.Drawing.Size(154, 45);
             this.valueBar.TabIndex = 1;
             this.valueBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.valueBar.Value = 1;
+            this.valueBar.Value = 50;
             this.valueBar.Scroll += new System.EventHandler(this.valueBar_Scroll);
             // 
             // valueNum
@@ -437,7 +449,7 @@
             this.valueNum.Size = new System.Drawing.Size(52, 20);
             this.valueNum.TabIndex = 0;
             this.valueNum.Value = new decimal(new int[] {
-            1,
+            50,
             0,
             0,
             0});
@@ -564,13 +576,6 @@
             this.addOperation.Text = "Suma";
             this.addOperation.UseVisualStyleBackColor = true;
             // 
-            // redrawToolStripMenuItem
-            // 
-            this.redrawToolStripMenuItem.Name = "redrawToolStripMenuItem";
-            this.redrawToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.redrawToolStripMenuItem.Text = "Redraw";
-            this.redrawToolStripMenuItem.Click += new System.EventHandler(this.redrawToolStripMenuItem_Click);
-            // 
             // WaveStudio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -583,6 +588,7 @@
             this.MainMenuStrip = this.principalMenu;
             this.Name = "WaveStudio";
             this.Text = "WaveAdd";
+            this.ResizeEnd += new System.EventHandler(this.WaveStudio_ResizeEnd);
             this.principalMenu.ResumeLayout(false);
             this.principalMenu.PerformLayout();
             this.baseContainer.Panel1.ResumeLayout(false);

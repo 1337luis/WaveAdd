@@ -30,9 +30,9 @@
         {
             this.baseWavePanel = new System.Windows.Forms.TableLayoutPanel();
             this.waveCanvas = new System.Windows.Forms.Panel();
-            this.deleteWave = new System.Windows.Forms.Button();
             this.waveInfo = new System.Windows.Forms.Panel();
             this.editWave = new System.Windows.Forms.Button();
+            this.deleteWave = new System.Windows.Forms.Button();
             this.baseWavePanel.SuspendLayout();
             this.waveInfo.SuspendLayout();
             this.SuspendLayout();
@@ -60,20 +60,7 @@
             this.waveCanvas.Name = "waveCanvas";
             this.waveCanvas.Size = new System.Drawing.Size(554, 161);
             this.waveCanvas.TabIndex = 0;
-            // 
-            // deleteWave
-            // 
-            this.deleteWave.BackColor = System.Drawing.Color.DarkRed;
-            this.deleteWave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.deleteWave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteWave.ForeColor = System.Drawing.Color.White;
-            this.deleteWave.Location = new System.Drawing.Point(3, 3);
-            this.deleteWave.Name = "deleteWave";
-            this.deleteWave.Size = new System.Drawing.Size(20, 20);
-            this.deleteWave.TabIndex = 1;
-            this.deleteWave.Text = "X";
-            this.deleteWave.UseVisualStyleBackColor = false;
-            this.deleteWave.Click += new System.EventHandler(this.deleteWave_Click);
+            this.waveCanvas.Click += new System.EventHandler(this.waveCanvas_Click);
             // 
             // waveInfo
             // 
@@ -100,6 +87,20 @@
             this.editWave.Text = "Modificar";
             this.editWave.UseVisualStyleBackColor = false;
             this.editWave.Click += new System.EventHandler(this.editWave_Click);
+            // 
+            // deleteWave
+            // 
+            this.deleteWave.BackColor = System.Drawing.Color.DarkRed;
+            this.deleteWave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.deleteWave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteWave.ForeColor = System.Drawing.Color.White;
+            this.deleteWave.Location = new System.Drawing.Point(3, 3);
+            this.deleteWave.Name = "deleteWave";
+            this.deleteWave.Size = new System.Drawing.Size(20, 20);
+            this.deleteWave.TabIndex = 1;
+            this.deleteWave.Text = "X";
+            this.deleteWave.UseVisualStyleBackColor = false;
+            this.deleteWave.Click += new System.EventHandler(this.deleteWave_Click);
             // 
             // WaveDisplay
             // 

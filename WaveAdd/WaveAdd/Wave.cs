@@ -1,31 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WaveAdd
 {
-    /*public string Code {
-   get {
-      return code;
-   }
-   set {
-      code = value;
-   }
-}
-*/
     public class Wave
     {
-        
-        public WaveOperation op;
-        WaveType tp;
-        double value;
-        int duration;
-        int delay;
+        public WaveOperation Operation { get; set; }
+        public WaveType Type { get; set; }
+        public double Value { get; set; }
+        public int Duration { get; set; }
+        public int Delay { get; set; }
+        public int periodo { get; set; }
 
-        public WaveOperation Operation { get { return op; } set { op = value; } }
-        public WaveType Type { get { return tp; } set { tp = value; } }
         public enum WaveOperation
         {
             sum = 0,
@@ -43,91 +28,92 @@ namespace WaveAdd
             abs
         }
 
-        public Wave( WaveOperation op, WaveType tp, double value, int duration = int.MaxValue, int delay = 0  )
+        public Wave( WaveOperation op, WaveType tp, double value, int duration = int.MaxValue, int delay = 0 )
         {
-            this.op = op;
-            this.tp = tp;
-            this.value = value;
-            this.duration = duration;
-            this.delay = delay;
+            this.Operation = op;
+            this.Type = tp;
+            this.Value = value;
+            this.Duration = duration;
+            this.Delay = delay;
+            this.periodo = 2;
         }
 
         public double GetValue()
         {
-            return value;
+            return Value;
         }
 
         public WaveOperation GetWaveOperation()
         {
-            return op;
+            return Operation;
         }
 
         public WaveType GetWaveType()
         {
-            return tp;
+            return Type;
         }
 
         public int GetDelay()
         {
-            return delay;
+            return Delay;
         }
 
         public int GetDuration()
         {
-            return duration;
+            return Duration;
         }
 
-        public void SetWaveType( WaveType tp ) 
+        public void SetWaveType( WaveType tp )
         {
-            this.tp = tp;
+            this.Type = tp;
         }
 
         public void SetWaveOperaton( WaveOperation op )
         {
-            this.op = op;
+            this.Operation = op;
         }
 
         public void SetValue( double value )
         {
-            this.value = value;
+            this.Value = value;
         }
 
-        public void SetDuration( int duration ) 
+        public void SetDuration( int duration )
         {
-            this.duration = duration;
+            this.Duration = duration;
         }
 
-        public void SetDelay( int delay ) 
+        public void SetDelay( int delay )
         {
-            this.delay = delay;
+            this.Delay = delay;
         }
 
-        public double GetY( int x )
+        public double GetY( float x )
         {
             double result = 0;
 
-            switch( tp )
+            switch( Type )
             {
                 case WaveType.sin:
-                    result = GetValue() * Math.Sin( x );
+                    result = GetValue() * Math.Sin( x / periodo );
                     break;
                 case WaveType.cos:
-                    result = GetValue() * Math.Cos( x );
+                    result = GetValue() * Math.Cos( x / periodo );
                     break;
                 case WaveType.asin:
-                    result = GetValue() * Math.Asin( x );
+                    result = periodo * Math.Asin( x / GetValue() );
                     break;
                 case WaveType.acos:
-                    result = GetValue() * Math.Acos( x );
+                    result = periodo * Math.Acos( x / GetValue() );
                     break;
                 case WaveType.tan:
-                    result = GetValue() * Math.Tan( x );
+                    result = GetValue() * Math.Tan( x / periodo );
                     break;
                 case WaveType.atan:
-                    result = GetValue() * Math.Atan( x );
+                    result = GetValue() * Math.Atan( x / periodo );
                     break;
                 case WaveType.abs:
-                    result = GetValue() * Math.Abs( x );
+                    result = periodo * Math.Abs( x / GetValue() );
                     break;
             }
 
